@@ -41,12 +41,12 @@
             this.iHaveASuggestionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.howDoIUseThisThingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.whoMadeThisBeautifulSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.mainEditor = new ScintillaNET.Scintilla();
             this.opacityBar = new System.Windows.Forms.TrackBar();
             this.lineLabel = new System.Windows.Forms.Label();
             this.selectedLanguage = new System.Windows.Forms.ComboBox();
-            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.opacityBar)).BeginInit();
@@ -152,6 +152,12 @@
             this.whoMadeThisBeautifulSoftwareToolStripMenuItem.Size = new System.Drawing.Size(366, 22);
             this.whoMadeThisBeautifulSoftwareToolStripMenuItem.Text = "Who made this beautiful software?";
             // 
+            // whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem
+            // 
+            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem.Name = "whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem";
+            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(366, 22);
+            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem.Text = "What are you planning to do with this software?";
+            // 
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
@@ -181,6 +187,7 @@
             this.mainEditor.Size = new System.Drawing.Size(654, 270);
             this.mainEditor.TabIndex = 2;
             this.mainEditor.WrapMode = ScintillaNET.WrapMode.Word;
+            this.mainEditor.InsertCheck += new System.EventHandler<ScintillaNET.InsertCheckEventArgs>(this.mainEditor_InsertCheck);
             this.mainEditor.TextChanged += new System.EventHandler(this.mainEditor_TextChanged_1);
             // 
             // opacityBar
@@ -232,12 +239,6 @@
             this.selectedLanguage.TabIndex = 4;
             this.selectedLanguage.Text = "Normal Text";
             this.selectedLanguage.SelectedIndexChanged += new System.EventHandler(this.selectedLanguage_SelectedIndexChanged);
-            // 
-            // whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem
-            // 
-            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem.Name = "whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem";
-            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem.Size = new System.Drawing.Size(366, 22);
-            this.whatAreYouPlanningToDoWithThisSoftwareToolStripMenuItem.Text = "What are you planning to do with this software?";
             // 
             // Form1
             // 

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -398,7 +399,7 @@ namespace AxiteEditor
         }
 
         // QUITTING THE APP!
-        private void Quit()
+        private bool Quit()
         {
             if (CurrentFileName != null || mainEditor.TextLength > 0)
             {
@@ -410,16 +411,19 @@ namespace AxiteEditor
                 if (confirmResult == DialogResult.Yes)
                 {
                     Environment.Exit(1); // Quitting.
+                    return true;
                 }
                 // If the user denies. 
                 else
                 {
                     SavingAs();
+                    return false;
                 }
             }
             else
             {
                 Environment.Exit(1); // Quitting.
+                return true;
             }
         }
 
@@ -430,8 +434,24 @@ namespace AxiteEditor
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Quit(); // Quitting the app.
+            bool isQuitting = Quit(); // Quitting the app.
+
+            // If the user doesn't wanna quit.
+            if (isQuitting == false)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                e.Cancel = false;
+            }
         }
+
+        // Automatic identation.
+        private ArrayList identationChars = new ArrayList()
+            {
+                ":", "{"
+            };
 
         private void mainEditor_TextChanged_1(object sender, EventArgs e)
         {
@@ -451,6 +471,7 @@ namespace AxiteEditor
             long lineCount = mainEditor.Lines.Count();
             lineLabel.Text = "Lines: " + lineCount;
 
+            // SAVING SYSTEM
             // If the user is alreading editing a file.
             if (CurrentFileName != null)
             {
@@ -461,6 +482,29 @@ namespace AxiteEditor
             else
             {
                 btSave.Enabled = false;
+            }
+
+            // IDENTATION
+            if (identationChars.Contains(mainEditor.Text[mainEditor.Text.Length - 1]))
+            {
+                var currentPos = mainEditor.CurrentPosition;
+                mainEditor.SearchFlags = SearchFlags.None;
+
+                // Search back from the current position
+                mainEditor.TargetStart = currentPos;
+                mainEditor.TargetEnd = 0;
+
+                // Is the character following 4 spaces or a tab?
+                if (mainEditor.SearchInTarget("    "+ mainEditor.Text[mainEditor.Text.Length - 1]) == (currentPos - 5))
+                {
+                    // Delete the leading 4 spaces
+                    mainEditor.DeleteRange((currentPos - 5), 4);
+                }
+                else if (mainEditor.SearchInTarget("\t"+ mainEditor.Text[mainEditor.Text.Length - 1]) == (currentPos - 2))
+                {
+                    // Delete the leading tab
+                    mainEditor.DeleteRange((currentPos - 2), 1);
+                }
             }
         }
 
@@ -505,12 +549,35 @@ namespace AxiteEditor
             }
         }
 
-        // Automatic identation.
-        private ArrayList identationChars = new ArrayList()
+        // Identation
+        private void mainEditor_InsertCheck(object sender, InsertCheckEventArgs e)
+        {
+            if ((e.Text.EndsWith("\r") || e.Text.EndsWith("\n")))
             {
-                ":", "{"
-            };
+                var curLine = mainEditor.LineFromPosition(e.Position);
+                var curLineText = mainEditor.Lines[curLine].Text;
 
+                var indent = Regex.Match(curLineText, @"^[ \t]*");
+                e.Text += indent.Value; // Add indent following "\r\n".
+
+                // Current line end with bracket?
+                if (selectedLanguage.Text == "C#" || selectedLanguage.Text == "C" || selectedLanguage.Text == "C++" || selectedLanguage.Text == "CSS" || selectedLanguage.Text == "Javascript" )
+                {
+                    if (Regex.IsMatch(curLineText, @"{\s*$")) // {
+                        e.Text += '\t'; // Add tab.
+                }
+                else if (selectedLanguage.Text == "Python 2" || selectedLanguage.Text == "Python 3")
+                {
+                    if (Regex.IsMatch(curLineText, @":\s*$")) // :
+                        e.Text += '\t'; // Add tab.
+                }
+                else if (selectedLanguage.Text == "HTML")
+                {
+                    if (Regex.IsMatch(curLineText, @">\s*$")) // <
+                        e.Text += '\t'; // Add tab.
+                }
+            }
+        }
 
         // Control + S method.
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -528,47 +595,38 @@ namespace AxiteEditor
                         SavingAs(); // Opening the save dialog.
                     }
                 }
-                else if (keyData == (Keys.Enter))
-                {
-                    if (identationChars.Contains(mainEditor.Text[mainEditor.Text.Length - 1].ToString()))
-                    {
-                        // Add the identation
-                        // mainEditor.CurrentPosition = mainEditor.Text.Length - 1;
-                        // mainEditor.Text.Remove(mainEditor.Text.Length - 1);
-                    }
-                }
             }
             return base.ProcessCmdKey(ref msg, keyData);
         }
-        /*
-        private void setJSON()
-        {
-            RestoreDefault();
+/*
+private void setJSON()
+{
+   RestoreDefault();
 
-            // Javascript config.
-            // ---------------------------------------------
-            mainEditor.Styles[Style.Json.Default].ForeColor = Color.FromArgb(79, 68, 68); // Kinda Gray
-            mainEditor.Styles[Style.Json.BlockComment].ForeColor = Color.FromArgb(0, 128, 0); // Green
-            mainEditor.Styles[Style.Json.LineComment].ForeColor = Color.FromArgb(0, 128, 0); // Green
-            mainEditor.Styles[Style.Json.Keyword].ForeColor = Color.FromArgb(111, 126, 168); // Blue
-            mainEditor.Styles[Style.Json.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
-            mainEditor.Styles[Style.Json.PropertyName].ForeColor = Color.Blue;
-            mainEditor.Styles[Style.Json.Operator].ForeColor = Color.Purple;
-            mainEditor.Styles[Style.Json.Number].ForeColor = Color.Olive;
-            // mainEditor.Styles[Style.Json.StringEol].FillLine = false;
-            // ---------------------------------------------
+   // Javascript config.
+   // ---------------------------------------------
+   mainEditor.Styles[Style.Json.Default].ForeColor = Color.FromArgb(79, 68, 68); // Kinda Gray
+   mainEditor.Styles[Style.Json.BlockComment].ForeColor = Color.FromArgb(0, 128, 0); // Green
+   mainEditor.Styles[Style.Json.LineComment].ForeColor = Color.FromArgb(0, 128, 0); // Green
+   mainEditor.Styles[Style.Json.Keyword].ForeColor = Color.FromArgb(111, 126, 168); // Blue
+   mainEditor.Styles[Style.Json.String].ForeColor = Color.FromArgb(163, 21, 21); // Red
+   mainEditor.Styles[Style.Json.PropertyName].ForeColor = Color.Blue;
+   mainEditor.Styles[Style.Json.Operator].ForeColor = Color.Purple;
+   mainEditor.Styles[Style.Json.Number].ForeColor = Color.Olive;
+   // mainEditor.Styles[Style.Json.StringEol].FillLine = false;
+   // ---------------------------------------------
 
-            // Setting the language to Javascript family.
-            mainEditor.Lexer = Lexer.Json;
+   // Setting the language to Javascript family.
+   mainEditor.Lexer = Lexer.Json;
 
-            Console.WriteLine("########################\nJavascript Structure");
-            Console.WriteLine(mainEditor.DescribeKeywordSets());
+   Console.WriteLine("########################\nJavascript Structure");
+   Console.WriteLine(mainEditor.DescribeKeywordSets());
 
-            // Setting the keywords.
-            mainEditor.SetKeywords(0, "abstract arguments await boolean break byte case catch char class const continue debugger default delete do document double else enum eval export extends false final finally float for function goto if implements import in instanceof int interface let long native new null package private protected public return short static super switch synchronized this throw throws transient true try typeof var void volatile while with document yield");
-            // mainEditor.SetKeywords(1, ""); // JSON KEYWORDS
-            // mainEditor.SetKeywords(2, ""); // JSON-LD KEYWORDS
-        }
-        */
+   // Setting the keywords.
+   mainEditor.SetKeywords(0, "abstract arguments await boolean break byte case catch char class const continue debugger default delete do document double else enum eval export extends false final finally float for function goto if implements import in instanceof int interface let long native new null package private protected public return short static super switch synchronized this throw throws transient true try typeof var void volatile while with document yield");
+   // mainEditor.SetKeywords(1, ""); // JSON KEYWORDS
+   // mainEditor.SetKeywords(2, ""); // JSON-LD KEYWORDS
+}
+*/
     }
 }
