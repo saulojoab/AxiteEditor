@@ -7,6 +7,7 @@ This lightwheight code editor has a opacity feature which allows to make the ent
 # Features:
 - Opacity system.
 - Supports Plain Text, Python 2/3, CSS, C#, C, C++, Javascript and HTML (more will be added in the future!).
+- Automatic identation.
 - Extremely light-weight.
 
 # Images:
@@ -14,4 +15,4 @@ This lightwheight code editor has a opacity feature which allows to make the ent
 ![alt text](https://i.imgur.com/TsoMEow.png)
 
 # The Team:
-Currently, I'm developing the code editor all by myself.
+Currently, I'm developing the code editor all by myself. Feel free to help me out! 
