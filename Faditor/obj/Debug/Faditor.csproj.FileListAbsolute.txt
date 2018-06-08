@@ -1,0 +1,13 @@
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Debug\Faditor.exe.config
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Debug\Faditor.exe
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Debug\Faditor.pdb
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Debug\Krypton.dll
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Debug\ScintillaNET.dll
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Debug\ScintillaNET.xml
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.csprojResolveAssemblyReference.cache
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.Form1.resources
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.Properties.Resources.resources
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.csproj.GenerateResource.Cache
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.csproj.CoreCompileInputs.cache
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.exe
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Debug\Faditor.pdb

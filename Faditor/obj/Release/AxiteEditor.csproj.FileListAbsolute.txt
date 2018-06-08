@@ -1,0 +1,11 @@
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Release\Faditor.exe.config
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Release\Faditor.exe
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Release\Faditor.pdb
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Release\ScintillaNET.dll
+C:\Users\Saulo\source\repos\Faditor\Faditor\bin\Release\ScintillaNET.xml
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Release\AxiteEditor.Form1.resources
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Release\Faditor.Properties.Resources.resources
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Release\AxiteEditor.csproj.GenerateResource.Cache
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Release\AxiteEditor.csproj.CoreCompileInputs.cache
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Release\Faditor.exe
+C:\Users\Saulo\source\repos\Faditor\Faditor\obj\Release\Faditor.pdb

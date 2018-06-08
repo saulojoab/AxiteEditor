@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxiteEditor", "Faditor\AxiteEditor.csproj", "{FFC19429-56C4-4D88-B6FE-8BAF2C03A8A6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFC19429-56C4-4D88-B6FE-8BAF2C03A8A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFC19429-56C4-4D88-B6FE-8BAF2C03A8A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFC19429-56C4-4D88-B6FE-8BAF2C03A8A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFC19429-56C4-4D88-B6FE-8BAF2C03A8A6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DD5ADAE-0E6B-4F11-9C3F-AF05F737C768}
+	EndGlobalSection
+EndGlobal
