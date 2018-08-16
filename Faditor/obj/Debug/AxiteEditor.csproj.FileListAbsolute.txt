@@ -21,3 +21,16 @@ C:\Users\Saulo\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.csproj
 C:\Users\Saulo\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.csproj.CoreCompileInputs.cache
 C:\Users\Saulo\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.exe
 C:\Users\Saulo\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.pdb
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\bin\Debug\AxiteEditor.exe.config
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\bin\Debug\AxiteEditor.exe
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\bin\Debug\AxiteEditor.pdb
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\bin\Debug\ScintillaNET.dll
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\bin\Debug\ScintillaNET.xml
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.csprojAssemblyReference.cache
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.Form1.resources
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.Properties.Resources.resources
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.csproj.GenerateResource.cache
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.csproj.CoreCompileInputs.cache
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.csproj.CopyComplete
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.exe
+C:\Users\Saulo Joab\Desktop\Projetos\axiteeditor\Faditor\obj\Debug\AxiteEditor.pdb

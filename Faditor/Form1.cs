@@ -78,7 +78,7 @@ namespace AxiteEditor
 
             // Setting the lexer.
             mainEditor.Lexer = Lexer.Python;
-
+          
             Console.WriteLine("########################\nPython Structure");
             Console.WriteLine(mainEditor.DescribeKeywordSets());
 
@@ -249,45 +249,40 @@ namespace AxiteEditor
                         selectedLanguage.Text = "";
 
                         // Getting the file extension and setting the editor to it's language.
-                        if (Path.GetExtension(openingFile.FileName) == ".py")
+                        switch (Path.GetExtension(openingFile.FileName))
                         {
-                            setPython(2);
-                            selectedLanguage.SelectedText = "Python 2";
-                        }
-                        else if (Path.GetExtension(openingFile.FileName) == ".cs")
-                        {
-                            setCFamily();
-                            selectedLanguage.SelectedText = "C#";
-                        }
-                        else if (Path.GetExtension(openingFile.FileName) == ".c")
-                        {
-                            setCFamily();
-                            selectedLanguage.SelectedText = "C";
-                        }
-                        else if (Path.GetExtension(openingFile.FileName) == ".cpp")
-                        {
-                            setCFamily();
-                            selectedLanguage.SelectedText = "C++";
-                        }
-                        else if (Path.GetExtension(openingFile.FileName) == ".html")
-                        {
-                            setHTML();
-                            selectedLanguage.SelectedText = "HTML";
-                        }
-                        else if (Path.GetExtension(openingFile.FileName) == ".css")
-                        {
-                            setCSS();
-                            selectedLanguage.SelectedText = "CSS";
-                        }
-                        else if (Path.GetExtension(openingFile.FileName) == ".js")
-                        {
-                            setCFamily();
-                            selectedLanguage.SelectedText = "Javascript";
-                        }
-                        else
-                        {
-                            RestoreDefault();
-                            selectedLanguage.SelectedText = "Normal Text";
+                            case ".py":
+                                setPython(2);
+                                selectedLanguage.SelectedText = "Python 2";
+                                break;
+                            case ".cs":
+                                setCFamily();
+                                selectedLanguage.SelectedText = "C#";
+                                break;
+                            case ".c":
+                                setCFamily();
+                                selectedLanguage.SelectedText = "C";
+                                break;
+                            case ".cpp":
+                                setCFamily();
+                                selectedLanguage.SelectedText = "C++";
+                                break;
+                            case ".html":
+                                setHTML();
+                                selectedLanguage.SelectedText = "HTML";
+                                break;
+                            case ".css":
+                                setCSS();
+                                selectedLanguage.SelectedText = "CSS";
+                                break;
+                            case ".js":
+                                setCFamily();
+                                selectedLanguage.SelectedText = "Javascript";
+                                break;
+                            default:
+                                RestoreDefault();
+                                selectedLanguage.SelectedText = "Normal Text";
+                                break;
                         }
 
                         // Updating the current filename. 
@@ -310,51 +305,46 @@ namespace AxiteEditor
         {
             // Saving the file.
             SaveFileDialog save = new SaveFileDialog();
-            if (selectedLanguage.Text == "Normal Text")
+
+            switch (selectedLanguage.Text)
             {
-                save.FileName = "FileNameHere.txt";
-                save.Filter = "Text File | *.txt";
-            }
-            else if (selectedLanguage.Text == "Python 2")
-            {
-                save.FileName = "FileNameHere.py";
-                save.Filter = "Python File | *.py";
-            }
-            else if (selectedLanguage.Text == "Python 3")
-            {
-                save.FileName = "FileNameHere.py";
-                save.Filter = "Python File | *.py";
-            }
-            else if (selectedLanguage.Text == "C#")
-            {
-                save.FileName = "FileNameHere.cs";
-                save.Filter = "C# File | *.cs";
-            }
-            else if (selectedLanguage.Text == "C")
-            {
-                save.FileName = "FileNameHere.c";
-                save.Filter = "C File | *.c";
-            }
-            else if (selectedLanguage.Text == "C++")
-            {
-                save.FileName = "FileNameHere.cpp";
-                save.Filter = "C++ File | *.cpp";
-            }
-            else if (selectedLanguage.Text == "HTML")
-            {
-                save.FileName = "FileNameHere.html";
-                save.Filter = "HTML File | *.html";
-            }
-            else if (selectedLanguage.Text == "CSS")
-            {
-                save.FileName = "FileNameHere.css";
-                save.Filter = "CSS File | *.css";
-            }
-            else if (selectedLanguage.Text == "Javascript")
-            {
-                save.FileName = "FileNameHere.js";
-                save.Filter = "JS File | *.js";
-            }
+                case "Normal Text":
+                    save.FileName = "FileNameHere.txt";
+                    save.Filter = "Text File | *.txt";
+                    break;
+                case "Python 2":
+                    save.FileName = "FileNameHere.py";
+                    save.Filter = "Python File | *.py";
+                    break;
+                case "Python 3":
+                    save.FileName = "FileNameHere.py";
+                    save.Filter = "Python File | *.py";
+                    break;
+                case "C#":
+                    save.FileName = "FileNameHere.cs";
+                    save.Filter = "C# File | *.cs";
+                    break;
+                case "C":
+                    save.FileName = "FileNameHere.c";
+                    save.Filter = "C File | *.c";
+                    break;
+                case "C++":
+                    save.FileName = "FileNameHere.cpp";
+                    save.Filter = "C++ File | *.cpp";
+                    break;
+                case "HTML":
+                    save.FileName = "FileNameHere.html";
+                    save.Filter = "HTML File | *.html";
+                    break;
+                case "CSS":
+                    save.FileName = "FileNameHere.css";
+                    save.Filter = "CSS File | *.css";
+                    break;
+                case "Javascript":
+                    save.FileName = "FileNameHere.js";
+                    save.Filter = "JS File | *.js";
+                    break;
+            } 
 
             // If the user saves.
             if (save.ShowDialog() == DialogResult.OK)
@@ -511,41 +501,29 @@ namespace AxiteEditor
         private void selectedLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
             // LANGUAGE SELECTION SYSTEM!
-            if (selectedLanguage.Text == "Normal Text")
+            switch (selectedLanguage.Text)
             {
-                RestoreDefault(); // Setting the default Style.
-            }
-            else if (selectedLanguage.Text == "Python 2")
-            {
-                setPython(1); // Setting the language to Python 2.
-            }
-            else if (selectedLanguage.Text == "Python 3")
-            {
-                setPython(2); // Setting the language to Python 3.
-            }
-            else if (selectedLanguage.Text == "C#")
-            {
-                setCFamily(); // Setting to any C language.
-            }
-            else if (selectedLanguage.Text == "C")
-            {
-                setCFamily(); // Setting to any C language.
-            }
-            else if (selectedLanguage.Text == "C++")
-            {
-                setCFamily(); // Setting to any C language.
-            }
-            else if (selectedLanguage.Text == "HTML")
-            {
-                setHTML(); // Setting the language to HTML.
-            }
-            else if (selectedLanguage.Text == "CSS")
-            {
-                setCSS(); // Setting the language to CSS.
-            }
-            else if (selectedLanguage.Text == "Javascript")
-            {
-                setCFamily(); // Setting the language to JS.
+                case "Normal Text":
+                    RestoreDefault(); // Setting the default Style.
+                    break;
+                case "Python 2":
+                    setPython(1); // Setting the language to Python 2.
+                    break;
+                case "Python 3":
+                    setPython(2); // Setting the language to Python 3.
+                    break;
+                case "C#": case "C": case "C++": case "Javascript":
+                    setCFamily(); // Setting to any C language.
+                    break;
+                case "HTML":
+                    setHTML(); // Setting the language to HTML.
+                    break;
+                case "CSS":
+                    setCSS(); // Setting the language to CSS.
+                    break;
+                default:
+                    RestoreDefault(); // Setting the default Style.
+                    break;
             }
         }
 
