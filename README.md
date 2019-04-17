@@ -1,6 +1,4 @@
 # Axite Editor
-A transparent code/text editor.
-
 Ever wanted to watch <b>tutorials, movies or any video at all</b> while coding, but never had a second monitor? Well, <b>Axite Editor</b> is here to help you.
 This lightwheight code editor has a opacity feature which allows to make the entire code editor transparent!
 
